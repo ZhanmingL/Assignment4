@@ -2,12 +2,17 @@ boolean teXt;
 boolean start;
 float startUp;
 float startDown;
+sky mysky;
+
 void setup(){
  size(400,400); 
  start = false;
  teXt = true;
+ mysky = new sky(0,0,-0.03,0,-0.01,0);
 }
 void draw(){
+ mysky.update();
+ mysky.display();
  fill(100);
  rect(0,startUp,width,height/2);
  rect(0,200+startDown,width,height/2);
