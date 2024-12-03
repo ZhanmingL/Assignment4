@@ -19,6 +19,7 @@ void setup(){
 void draw(){
  mysky.update(); //running clouds moving
  mysky.display(); //draw clouds
+ stroke(0);
  fill(100);
  rect(0,startUp,width,height/2);
  rect(0,200+startDown,width,height/2);
