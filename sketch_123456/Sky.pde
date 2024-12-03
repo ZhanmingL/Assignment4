@@ -15,7 +15,8 @@ void update(){
 }
 
 void display(){
- fill(0,0,255);
- rect(position.x,0,3000,height);
+ noStroke();
+ fill(154, 253, 255);
+ rect((position.x)%3000,0,3000,height);
 }
 }

@@ -8,7 +8,7 @@ void setup(){
  size(400,400); 
  start = false;
  teXt = true;
- mysky = new sky(0,0,-0.03,0,-0.01,0);
+ mysky = new sky(0,0,-0.1,0,-0.3,0);
 }
 void draw(){
  mysky.update();
