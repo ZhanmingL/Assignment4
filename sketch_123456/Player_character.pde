@@ -1,7 +1,7 @@
 class character{
   PVector position;
   PVector velocity;
-  PVector acceleration;
+  PVector acceleration; //gravity of character
   
 character(float x, float y, float vx, float vy){
   position = new PVector(x,y);
