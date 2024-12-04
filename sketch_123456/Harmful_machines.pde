@@ -11,21 +11,21 @@ machine(float x, float y, float vx, float vy, float ax, float ay){
 
 void update(){
   position.add(velocity);
-  velocity.add(acceleration);
-  if(position.x < -400){
-  position.x = width;
-  position.y = random(0, height - 80);
-  scores += 1;
+  velocity.add(acceleration); //x value (horizontally) moves faster and faster
+  if(position.x < -400){ //reset two machines after they reach the left
+  position.x = width; //come back to the right
+  position.y = random(0, height - 80); //randomly regenerate two machines, different vertical positions
+  scores += 1; //counts for one score!
   }
 }
 
 void display(){
   fill(100);
   rect(width + position.x % width, 0 + position.y % height, 50, 80);
-  rect(width + position.x % width, 250 + position.y % height, 50, 80);
+  rect(width + position.x % width, 250 + position.y % height, 50, 80); //draw two bad machines
   fill(153, 73, 176);
   textSize(20);
-  text("You own " + scores + " score(s)",220,375);
+  text("You own " + scores + " score(s)",220,375); //tell players how many scores do they have
 
  }
 }

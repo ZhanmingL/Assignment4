@@ -12,7 +12,7 @@ sky(float x,float y,float vx,float vy,float ax,float ay){
 
 void update(){
   position.add(velocity);
-  velocity.add(acceleration); //in order to move faster and faster
+  velocity.add(acceleration); //in order to move faster and faster, to show the strong airflow
 }
 
 void display(){
@@ -23,7 +23,7 @@ void display(){
  for (int i = 0; i < rectSkyX.length; i++){ //put arrays including X and Y values into clouds
   for (int o = 0; o < rectSkyY.length; o++){
    ellipse(rectSkyX[i]+(position.x)%3000,rectSkyY[o]+(position.y)%3000 + random(-100,100),random(10,300),5);
-   }
+   } //draw clouds
   }
  }
 }
