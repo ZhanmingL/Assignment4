@@ -6,7 +6,7 @@ class character{
 character(float x, float y, float vx, float vy){
   position = new PVector(x,y);
   velocity = new PVector(vx,vy);
-  acceleration = new PVector(0,0.01); //let the players always have gravity towards down, make the game more interesting!
+  acceleration = new PVector(0,0.02); //let the players always have gravity towards down, make the game more interesting!
 }
 
 void update(){
@@ -27,7 +27,15 @@ void update(){
 }
   
  void display(){
-  fill(251, 84, 41);
+  fill(188, 66, 254);
   rect(position.x, position.y + velocity.y,20,20); //draw the character
+  fill(251, 84, 41);
+  ellipseMode(CORNER);
+  ellipse(position.x, position.y + velocity.y,20,20);
+  fill(255, 236, 64);
+  triangle(position.x,position.y,position.x+20,position.y,position.x+10,position.y-20); //top triangle
+  triangle(position.x,position.y+20,position.x+20,position.y+20,position.x+10,position.y+40); //bottom triangle
+  triangle(position.x,position.y,position.x,position.y+20,position.x-10,position.y+10); //left triangle
+  triangle(position.x+20,position.y,position.x+20,position.y+20,position.x+30,position.y+10); //right triangle
  }  
 }

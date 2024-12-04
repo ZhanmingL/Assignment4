@@ -47,8 +47,12 @@ void draw(){
  rect(0,startUp,width,height/2);
  rect(0,200+startDown,width,height/2); //before game starts, two rects cover the sky or game page
  fill(0,255,0);
+ 
  if(teXt){
+ textSize(15);
+ text("Do not fly over the screen or touch anything after 18 scores!",20,60);
  textSize(20);
+ text("Protect your middle cabochon!",20,40);//tell player middle circle will be hurt and reduce health
  text("Click mouse to start the game",20,20);//tell players how to start the game
  }                                           //When game starts, boolean teXt = false, then it disappears
  
@@ -105,15 +109,15 @@ void draw(){
    myCharacter.update();
    myCharacter.display();
    //run functions from classes
+   
+   if(lengTh >= 0){ //If there is a length of health bar, then keep it
+   fill(131, 76, 228);
+   rect(0,360,lengTh,20); //Health Bar
+   }else{ //If the length comes to zero, then ends the game
+   gameOver = true;
+ }
  }
  
- //Health Bar
- if(lengTh >= 0){ //If there is a length of health bar, then keep it
-  fill(131, 76, 228);
-  rect(0,360,lengTh,20);
- }else{ //If the length comes to zero, then ends the game
-  gameOver = true;
- }
  
  if(start){
   startUp = startUp - 2;
@@ -129,6 +133,7 @@ void draw(){
   fill(255);
   textSize(60);
   text("Game Over",60,200); //game over page covers the screen
+  scores -= 999; //stop adding scores, otherwise there will be a bug
  }
  
  if(scores == 20){
