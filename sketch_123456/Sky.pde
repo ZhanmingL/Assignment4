@@ -23,7 +23,7 @@ void display(){
  for (int i = 0; i < rectSkyX.length; i++){ //put arrays including X and Y values into clouds
   for (int o = 0; o < rectSkyY.length; o++){
    ellipse(rectSkyX[i]+(position.x)%3000,rectSkyY[o]+(position.y)%3000 + random(-100,100),random(10,300),5);
+   }
+  }
  }
- }
-}
 }

@@ -8,7 +8,7 @@ machine(float x, float y, float vx, float vy, float ax, float ay){
   velocity = new PVector(vx,vy);
   acceleration = new PVector(ax,ay);
 }
-  
+
 void update(){
   position.add(velocity);
   velocity.add(acceleration);
@@ -26,9 +26,6 @@ void display(){
   fill(153, 73, 176);
   textSize(20);
   text("You own " + scores + " score(s)",220,375);
-}
-  
-  
-  
-  
+
+ }
 }

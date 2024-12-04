@@ -26,11 +26,12 @@ void setup(){
  teXt = true; //in order to show the text: click mouse
  mySky = new sky(0,0,-0.1,0,-1,0); //0 is adding 0.1 all the time, 0.1 is adding 1 all the time (negative number)
  badMachine = new machine(0,0,-1, 0,-0.003,0); //machine moves from right to left
- myCharacter = new character(0,height/2,0,0);
+ myCharacter = new character(20,height/2,0,0);
 }
 void draw(){
  mySky.update(); //running clouds moving
  mySky.display(); //draw clouds
+ 
  
  stroke(0);
  fill(100);
@@ -47,6 +48,9 @@ void draw(){
    myCharacter.update();
    myCharacter.display();
  }
+ 
+
+ 
  if(start){
   startUp = startUp - 2;
   startDown = startDown + 2;

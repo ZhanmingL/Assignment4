@@ -25,10 +25,8 @@ void update(){
   }
 }
   
-void display(){
+ void display(){
   fill(251, 84, 41);
   rect(position.x, position.y + velocity.y,20,20);
-}
-
-  
+ }  
 }
