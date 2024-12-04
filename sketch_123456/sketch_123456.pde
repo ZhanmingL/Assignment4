@@ -29,14 +29,21 @@ int[] rectSkyY = { //array for Y values of clouds
 
 void setup(){
  size(400,400); //if you see sky class you may find that there is also another background moving all the time, very very long rect, in order to show the strong airflow
+ 
  start = false;
  reallyStart = false; //game haven't started yet, so they shoule be false, waiting for mouse pressing
  iAmTouched = false; //machines haven't generated, so no touching now (before game starts)
  teXt = true; //in order to show the text: click mouse
+ 
  mySky = new sky(0,0,-0.1,0,-1,0); //0 is adding 0.1 all the time, 0.1 is adding 1 all the time (negative number)
  badMachine = new machine(0,0,-1, 0,-0.003,0); //machine moves from right to left
  myCharacter = new character(20,height/2,0,0); //generating player's character
+ 
+ println("Hold w or s to move up and down"); //text tutorial
 }
+
+
+
 void draw(){
  mySky.update(); //running clouds moving
  mySky.display(); //draw clouds
