@@ -10,7 +10,7 @@ boolean gameWin; //judgement for winning condition
 float startUp = 0; //rectangle goes up
 float startDown = 0; //rectangle goes down
 int scores = 0; //counting scores, 20 scores to win
-int lengTh = 200; //length of health bar
+int lengTh = 180; //length of health bar
 
 //class claim group!
 sky mySky; //use sky class
@@ -50,7 +50,7 @@ void draw(){
  
  if(teXt){
  textSize(15);
- text("Do not fly over the screen or touch anything after 18 scores!",20,60);
+ text("Do not fly over the screen or touch rectangles after 18 scores!",16,60);
  textSize(20);
  text("Protect your middle cabochon!",20,40);//tell player middle circle will be hurt and reduce health
  text("Click mouse to start the game",20,20);//tell players how to start the game
@@ -71,13 +71,15 @@ void draw(){
  if(iAmTouched){ //initially, machines move slowly, so players receive longer time of losing health. Also, let them now how to play my game, lose lower health at the beginning
    lengTh -= 2;
    iAmTouched = false; //after touch machines, false to stop losing health.
+   fill(255, 26, 26,100);
+   rect(0,0,width,height); //effect of losing health
  }
  if(scores >= 6){ //When scores come to 6, game starts to become more and more difficult
    if(myCharacter.position.x>width+badMachine.position.x && myCharacter.position.x<width+badMachine.position.x+50){
    if(myCharacter.position.y>badMachine.position.y && myCharacter.position.y<badMachine.position.y+80){ //I should keep judgements as well. Otherwise there were errors
-     lengTh -= 6;
+     lengTh -= 8;
    }else if(myCharacter.position.y>badMachine.position.y+250 && myCharacter.position.y<badMachine.position.y+80+250){
-     lengTh -= 6;
+     lengTh -= 8;
    }
   }
  }
@@ -104,15 +106,15 @@ void draw(){
  //Really? You win my game? Ohhhhhhhhhh, you are very nice!
  
  if(reallyStart){
-   badMachine.update();
-   badMachine.display();
    myCharacter.update();
    myCharacter.display();
+   badMachine.update();
+   badMachine.display();
    //run functions from classes
    
    if(lengTh >= 0){ //If there is a length of health bar, then keep it
    fill(131, 76, 228);
-   rect(0,360,lengTh,20); //Health Bar
+   rect(20,360,lengTh,20); //Health Bar
    }else{ //If the length comes to zero, then ends the game
    gameOver = true;
  }
@@ -127,6 +129,7 @@ void draw(){
     reallyStart = true; //run classes codes and functions, all elements start to work, then the game really start!
   }
  }
+ 
  if(gameOver){
   fill(0);
   rect(0,0,width,height);
@@ -135,6 +138,7 @@ void draw(){
   text("Game Over",60,200); //game over page covers the screen
   scores -= 999; //stop adding scores, otherwise there will be a bug
  }
+ 
  
  if(scores == 20){
   gameWin = true; //20 scores to win this game

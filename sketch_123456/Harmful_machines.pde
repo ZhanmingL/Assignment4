@@ -20,9 +20,12 @@ void update(){
 }
 
 void display(){
-  fill(100);
+  fill(146, 39, 150);
   rect(width + position.x % width, 0 + position.y % height, 50, 80);
   rect(width + position.x % width, 250 + position.y % height, 50, 80); //draw two bad machines
+  fill(253, 54, 23);
+  ellipse(width + position.x % width, 0 + position.y % height, 50, 80);
+  ellipse(width + position.x % width, 250 + position.y % height, 50, 80); //bad machines components
   fill(153, 73, 176);
   textSize(20);
   text("You own " + scores + " score(s)",220,375); //tell players how many scores do they have
