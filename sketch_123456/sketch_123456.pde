@@ -2,7 +2,12 @@ boolean teXt; //Tell players that clicking left mouse button to start my game
 boolean start; //After players click their mouses, two rectangles go down and up, means begin
 float startUp; //rectangle goes up
 float startDown; //rectangle goes down
-sky mysky;
+
+
+sky mySky; //use sky class
+machine badMachine; //use machine class (enemy)
+character myCharacter;
+
 int[] rectSkyX = { //array for X values of clouds
   500,600,750,810,1400,1450,1800,1900,2100,2300,2300,2400,2700
 };
@@ -11,14 +16,21 @@ int[] rectSkyY = { //array for Y values of clouds
 };
 
 void setup(){
- size(400,400); 
+ size(400,400);
  start = false;
  teXt = true; //in order to show the text: click mouse
- mysky = new sky(0,0,-0.1,0,-1,0); //0 is adding 0.1 all the time, 0.1 is adding 1 all the time (negative number)
+ mySky = new sky(0,0,-0.1,0,-1,0); //0 is adding 0.1 all the time, 0.1 is adding 1 all the time (negative number)
+ badMachine = new machine(0,0,-1, 0,-0.001,0); //machine moves from right to left
+ myCharacter = new character(0,height/2,0,0);
 }
 void draw(){
- mysky.update(); //running clouds moving
- mysky.display(); //draw clouds
+ mySky.update(); //running clouds moving
+ mySky.display(); //draw clouds
+ badMachine.update();
+ badMachine.display();
+ myCharacter.update();
+ myCharacter.display();
+ 
  stroke(0);
  fill(100);
  rect(0,startUp,width,height/2);
