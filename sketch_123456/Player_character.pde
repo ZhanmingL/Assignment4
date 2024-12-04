@@ -20,8 +20,8 @@ void update(){
      velocity.y += 0.02;
    }
   }
-  if(position.y > height/2 + 200 || position.y < height/2 - 200){
-  gameOver = true;
+  if(position.y > height/2 + 200 || position.y < height/2 - 220){
+   gameOver = true;
   }
 }
   

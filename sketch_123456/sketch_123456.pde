@@ -3,8 +3,9 @@ boolean start; //After players click their mouses, two rectangles go down and up
 boolean gameOver;
 boolean reallyStart; //Draw harmful machines and players' character
 
-float startUp; //rectangle goes up
-float startDown; //rectangle goes down
+float startUp = 0; //rectangle goes up
+float startDown = 0; //rectangle goes down
+int scores = 0;
 
 
 sky mySky; //use sky class
