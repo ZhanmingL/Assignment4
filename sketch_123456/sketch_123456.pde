@@ -1,5 +1,8 @@
 boolean teXt; //Tell players that clicking left mouse button to start my game
 boolean start; //After players click their mouses, two rectangles go down and up, means begin
+boolean gameOver;
+boolean reallyStart; //Draw harmful machines and players' character
+
 float startUp; //rectangle goes up
 float startDown; //rectangle goes down
 
@@ -18,6 +21,7 @@ int[] rectSkyY = { //array for Y values of clouds
 void setup(){
  size(400,400);
  start = false;
+ reallyStart = false;
  teXt = true; //in order to show the text: click mouse
  mySky = new sky(0,0,-0.1,0,-1,0); //0 is adding 0.1 all the time, 0.1 is adding 1 all the time (negative number)
  badMachine = new machine(0,0,-1, 0,-0.003,0); //machine moves from right to left
@@ -26,10 +30,6 @@ void setup(){
 void draw(){
  mySky.update(); //running clouds moving
  mySky.display(); //draw clouds
- badMachine.update();
- badMachine.display();
- myCharacter.update();
- myCharacter.display();
  
  stroke(0);
  fill(100);
@@ -40,13 +40,26 @@ void draw(){
  textSize(20);
  text("Click mouse to start the game",20,20);
  }
+ if(reallyStart){
+   badMachine.update();
+   badMachine.display();
+   myCharacter.update();
+   myCharacter.display();
+ }
  if(start){
   startUp = startUp - 2;
   startDown = startDown + 2;
   if(startUp == -200){
     start = false;
-    //Game start, new booleans will be put here.
+    reallyStart = true;
   }
+ }
+ if(gameOver){
+  fill(0);
+  rect(0,0,width,height);
+  fill(255);
+  textSize(60);
+  text("Game Over",60,200);
  }
 }
 void mousePressed(){

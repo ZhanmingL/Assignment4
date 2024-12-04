@@ -13,12 +13,15 @@ void update(){
   position.add(velocity);
   velocity.add(acceleration);
   
-  if (keyPressed){
+  if(keyPressed){
    if(key == 'w'){
      velocity.y -= 0.05;
    }else if(key == 's'){
      velocity.y += 0.02;
    }
+  }
+  if(position.y > height/2 + 200 || position.y < height/2 - 200){
+  gameOver = true;
   }
 }
   
