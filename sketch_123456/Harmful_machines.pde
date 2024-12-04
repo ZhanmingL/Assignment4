@@ -20,8 +20,8 @@ void update(){
 
 void display(){
   fill(100);
-  rect(width + position.x % width, -200 + position.y % height, 50, 300);
-  rect(width + position.x % width, 200 + position.y % height, 50, 300);
+  rect(width + position.x % width, 0 + position.y % height, 50, 80);
+  rect(width + position.x % width, 250 + position.y % height, 50, 80);
 }
   
   
