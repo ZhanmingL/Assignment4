@@ -10,8 +10,10 @@ character(float x, float y, float vx, float vy){
 }
 
 void update(){
+  if(reallyStart){
   position.add(velocity); //velocity lets players move up and down
   velocity.add(acceleration); //acceleration lets players move downward automatically
+  }
   
   if(keyPressed){ //'w' and 's' control character moves up and down
    if(key == 'w'){
@@ -37,5 +39,5 @@ void update(){
   triangle(position.x,position.y+20,position.x+20,position.y+20,position.x+10,position.y+40); //bottom triangle
   triangle(position.x,position.y,position.x,position.y+20,position.x-10,position.y+10); //left triangle
   triangle(position.x+20,position.y,position.x+20,position.y+20,position.x+30,position.y+10); //right triangle
- }  
+ }
 }

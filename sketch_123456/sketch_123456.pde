@@ -5,6 +5,7 @@ boolean gameOver; //judgement for game ends
 boolean reallyStart; //Draw harmful machines and players' character
 boolean iAmTouched; //judgement for machines touch player
 boolean gameWin; //judgement for winning condition
+boolean gameRestart; //restart a game when win or lose
 
 //variable group!
 float startUp = 0; //rectangle goes up
@@ -14,8 +15,8 @@ int lengTh = 180; //length of health bar
 
 //class claim group!
 sky mySky; //use sky class
-machine badMachine; //use machine class (enemy)
-character myCharacter;
+machine badMachine; //use machine class (objects to reduce health)
+character myCharacter; //player
 
 //array group!
 int[] rectSkyX = { //array for X values of clouds
@@ -30,10 +31,13 @@ int[] rectSkyY = { //array for Y values of clouds
 void setup(){
  size(400,400); //if you see sky class you may find that there is also another background moving all the time, very very long rect, in order to show the strong airflow
  
- start = false;
+ start = false; //waiting for start
  reallyStart = false; //game haven't started yet, so they shoule be false, waiting for mouse pressing
  iAmTouched = false; //machines haven't generated, so no touching now (before game starts)
  teXt = true; //in order to show the text: click mouse
+ gameRestart = false; //game not restart yet
+ gameWin = false; //not win yet
+ gameOver = false;//not lose yet
  
  mySky = new sky(0,0,-0.1,0,-1,0); //0 is adding 0.1 all the time, 0.1 is adding 1 all the time (negative number)
  badMachine = new machine(0,0,-1, 0,-0.003,0); //machine moves from right to left
@@ -143,7 +147,17 @@ void draw(){
   fill(255);
   textSize(60);
   text("Game Over",60,200); //game over page covers the screen
+  textSize(30);
+  text("Press G to try again!",65,250);
   scores -= 999; //stop adding scores, otherwise there will be a bug
+  
+  reallyStart = false; //stop class still updating
+  
+  if(keyPressed){
+   if(key == 'g'){
+     gameRestart = true; //click G key to activate this boolean - reset everything
+   }
+  }
  }
  
  
@@ -156,8 +170,49 @@ void draw(){
    fill(0);
    textSize(26);
    text("You Win my Game, OMG so Great!",20,200); //game winning page covers the screen
+   textSize(40);
+   text("Press G to play again!",20,250); //tell players how to restart game again
+   
+  reallyStart = false; //stop class still updating
+  
+  if(keyPressed){
+   if(key == 'g'){
+     gameRestart = true; //restart by G
+   }
+  }
  }
-}
+ 
+ if(gameRestart){ //OK, this is how a new game comes
+   gameOver = false; //turn off gameOver content
+   gameWin = false; //turn off gameWin content
+   scores = 0; //reset score
+   lengTh = 180; //reset health bar
+   
+   myCharacter.position.x = 20; //reset all class values
+   myCharacter.position.y = height/2;
+   myCharacter.velocity.x = 0;
+   myCharacter.velocity.y = 0;
+   
+   badMachine.position.x = 0;
+   badMachine.position.y = 0;
+   badMachine.velocity.x = -1;
+   badMachine.velocity.y = 0;
+   badMachine.acceleration.x = -0.003;
+   badMachine.acceleration.y = 0;
+   
+   mySky.position.x = 0;
+   mySky.position.y = 0;
+   mySky.velocity.x = -0.1;
+   mySky.velocity.y = 0;
+   mySky.acceleration.x = -1;
+   mySky.acceleration.y = 0;
+   
+   reallyStart = true; //all class calues are reset successfully! Then we can continue updating values
+   gameRestart = false; // Everything is done! Stop this to release variables like scores and lengTh... Because like if gameRestart == true, scores always be zero
+  } 
+ }
+ 
+
 void mousePressed(){ //after mouse is pressed
  start = true; //game starts, put away the before game page
  teXt = false; //don't show the tutorial text from now
