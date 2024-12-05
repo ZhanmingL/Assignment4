@@ -76,7 +76,7 @@ void draw(){
      iAmTouched = true;
    }else if(myCharacter.position.y>badMachine.position.y+250 && myCharacter.position.y<badMachine.position.y+80+250){
      iAmTouched = true;
- }
+  }
  }
  
  if(iAmTouched){ //initially, machines move slowly, so players receive longer time of losing health. Also, let them now how to play my game, lose lower health at the beginning
@@ -138,8 +138,8 @@ void draw(){
   if(startUp == -200){
     start = false; //we don't want "start" anymore, leave it
     reallyStart = true; //run classes codes and functions, all elements start to work, then the game really start!
+   }
   }
- }
  
  if(gameOver){
   fill(0);
@@ -217,3 +217,6 @@ void mousePressed(){ //after mouse is pressed
  start = true; //game starts, put away the before game page
  teXt = false; //don't show the tutorial text from now
 }
+
+
+//Frankly, I think my codes are a bit easy and complicating. I checked codes format that I forgot on the website"processing.org"

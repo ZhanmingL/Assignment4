@@ -29,6 +29,5 @@ void display(){
   fill(153, 73, 176);
   textSize(20);
   text("You own " + scores + " score(s)",220,375); //tell players how many scores do they have
-
  }
 }

@@ -7,7 +7,7 @@ character(float x, float y, float vx, float vy){
   position = new PVector(x,y);
   velocity = new PVector(vx,vy);
   acceleration = new PVector(0,0.02); //let the players always have gravity towards down, make the game more interesting!
-}
+} //I reviewed this gravity acceleration technique through SLATE - Programming - Lunar Landing
 
 void update(){
   if(reallyStart){
